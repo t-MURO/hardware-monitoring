@@ -2,14 +2,18 @@ export interface HardwareStats {
   cpu: {
     load: number;
     temp: number | null;
+    coreTemps: Array<number | null>;
     cores: number[];
   };
-  gpu: {
+  gpu: Array<{
     temp: number | null;
     model: string;
     vendor: string;
     vram: number;
-  };
+    clockCore: number | null;
+    clockMemory: number | null;
+    bus: string | null;
+  }>;
   memory: {
     total: number;
     used: number;
@@ -32,6 +36,11 @@ export interface HardwareStats {
     release: string;
     uptime: number;
     model: string;
+    hostname: string;
+    arch: string;
+    cpu: string;
+    memory: number;
+    bootTime: number | null;
   };
   timestamp: number;
 }
