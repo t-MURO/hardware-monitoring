@@ -2,12 +2,12 @@ FROM node:20-alpine AS build
 
 WORKDIR /app
 
-COPY client/package.json client/package-lock.json ./client/
-COPY server/package.json server/package-lock.json ./server/
+COPY client/package.json ./client/
+COPY server/package.json ./server/
 COPY shared ./shared
 
-RUN npm --prefix client ci
-RUN npm --prefix server ci
+RUN npm --prefix client install
+RUN npm --prefix server install
 
 COPY client ./client
 COPY server ./server
