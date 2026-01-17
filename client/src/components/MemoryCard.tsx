@@ -41,7 +41,7 @@ const MemoryCard = memo(function MemoryCard({ stats }: MemoryCardProps) {
             strokeWidth={2}
             animationDuration={0}
           >
-            {data.map((entry, index) => (
+            {data.map((_, index) => (
               <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
             ))}
           </Pie>

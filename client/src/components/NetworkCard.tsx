@@ -1,4 +1,4 @@
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { Wifi } from 'lucide-react';
 import * as types from '../types.ts';
 import { memo, useMemo } from 'react';
@@ -39,11 +39,12 @@ const NetworkCard = memo(function NetworkCard({ stats, history }: NetworkCardPro
           <h3 className={`text-sm font-semibold mb-2 ${isDark ? 'text-white' : 'text-black'}`}>Upload</h3>
           <ResponsiveContainer width="100%" height={150}>
             <LineChart data={uploadData} animationDuration={0}>
-              <CartesianGrid stroke={isDark ? "#ffffff" : "#000000"} strokeOpacity={0.2} />
-              <XAxis dataKey="time" hide />
-              <YAxis stroke={isDark ? "#ffffff" : "#000000"} axisLine={false} tick={{ fill: isDark ? '#ffffff' : '#000000', fontSize: 10 }} />
-              <Tooltip contentStyle={{ backgroundColor: isDark ? '#111' : '#fff', color: isDark ? '#ffffff' : '#000000', border: `2px solid ${isDark ? '#ffffff' : '#000000'}`, padding: '10px', fontSize: '14px', fontFamily: 'monospace' }} formatter={(value) => `${((value * 8) / 1000000).toFixed(2)} Mbits/s`} />
-              <Line type="monotone" dataKey="upload" stroke={isDark ? "#ffffff" : "#000000"} strokeWidth={3} dot={false} animationDuration={0} />
+               <CartesianGrid stroke={isDark ? "#ffffff" : "#000000"} strokeOpacity={0.2} />
+               <XAxis dataKey="time" hide />
+               <YAxis stroke={isDark ? "#ffffff" : "#000000"} axisLine={false} tick={{ fill: isDark ? '#ffffff' : '#000000', fontSize: 10 }} />
+               <Tooltip contentStyle={{ backgroundColor: isDark ? '#111' : '#fff', color: isDark ? '#ffffff' : '#000000', border: `2px solid ${isDark ? '#ffffff' : '#000000'}`, padding: '10px', fontSize: '14px', fontFamily: 'monospace' }} formatter={(value) => `${((Number(value) * 8) / 1000000).toFixed(2)} Mbits/s`} />
+               <Line type="monotone" dataKey="upload" stroke={isDark ? "#ffffff" : "#000000"} strokeWidth={3} dot={false} animationDuration={0} />
+
             </LineChart>
           </ResponsiveContainer>
         </div>
@@ -51,11 +52,12 @@ const NetworkCard = memo(function NetworkCard({ stats, history }: NetworkCardPro
           <h3 className={`text-sm font-semibold mb-2 ${isDark ? 'text-white' : 'text-black'}`}>Download</h3>
           <ResponsiveContainer width="100%" height={150}>
             <LineChart data={downloadData} animationDuration={0}>
-              <CartesianGrid stroke={isDark ? "#ffffff" : "#000000"} strokeOpacity={0.2} />
-              <XAxis dataKey="time" hide />
-              <YAxis stroke={isDark ? "#ffffff" : "#000000"} axisLine={false} tick={{ fill: isDark ? '#ffffff' : '#000000', fontSize: 10 }} />
-              <Tooltip contentStyle={{ backgroundColor: isDark ? '#111' : '#fff', color: isDark ? '#ffffff' : '#000000', border: `2px solid ${isDark ? '#ffffff' : '#000000'}`, padding: '10px', fontSize: '14px', fontFamily: 'monospace' }} formatter={(value) => `${((value * 8) / 1000000).toFixed(2)} Mbits/s`} />
-              <Line type="monotone" dataKey="download" stroke={isDark ? "#cccccc" : "#666666"} strokeWidth={3} dot={false} animationDuration={0} />
+               <CartesianGrid stroke={isDark ? "#ffffff" : "#000000"} strokeOpacity={0.2} />
+               <XAxis dataKey="time" hide />
+               <YAxis stroke={isDark ? "#ffffff" : "#000000"} axisLine={false} tick={{ fill: isDark ? '#ffffff' : '#000000', fontSize: 10 }} />
+               <Tooltip contentStyle={{ backgroundColor: isDark ? '#111' : '#fff', color: isDark ? '#ffffff' : '#000000', border: `2px solid ${isDark ? '#ffffff' : '#000000'}`, padding: '10px', fontSize: '14px', fontFamily: 'monospace' }} formatter={(value) => `${((Number(value) * 8) / 1000000).toFixed(2)} Mbits/s`} />
+               <Line type="monotone" dataKey="download" stroke={isDark ? "#cccccc" : "#666666"} strokeWidth={3} dot={false} animationDuration={0} />
+
             </LineChart>
           </ResponsiveContainer>
         </div>

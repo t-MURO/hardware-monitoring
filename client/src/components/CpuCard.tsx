@@ -1,4 +1,4 @@
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar, Legend } from 'recharts';
+import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts';
 import { Cpu } from 'lucide-react';
 import * as types from '../types.ts';
 import { memo, useMemo } from 'react';
@@ -35,7 +35,8 @@ const CpuCard = memo(function CpuCard({ stats, history }: CpuCardProps) {
           <CartesianGrid stroke={isDark ? "#ffffff" : "#000000"} strokeOpacity={0.2} />
           <XAxis dataKey="time" hide />
           <YAxis domain={[0, 100]} stroke={isDark ? "#ffffff" : "#000000"} axisLine={false} ticks={[0, 50, 100]} tick={{ fill: isDark ? '#ffffff' : '#000000', fontSize: 12 }} />
-          <Tooltip contentStyle={{ backgroundColor: isDark ? '#111' : '#fff', color: isDark ? '#ffffff' : '#000000', border: `2px solid ${isDark ? '#ffffff' : '#000000'}`, padding: '10px', fontSize: '14px', fontFamily: 'monospace' }} formatter={(value) => `${value.toFixed(1)}%`} />
+            <Tooltip contentStyle={{ backgroundColor: isDark ? '#111' : '#fff', color: isDark ? '#ffffff' : '#000000', border: `2px solid ${isDark ? '#ffffff' : '#000000'}`, padding: '10px', fontSize: '14px', fontFamily: 'monospace' }} formatter={(value) => `${Number(value).toFixed(1)}%`} />
+
           <Area type="monotone" dataKey="load" stroke={isDark ? "#ffffff" : "#000000"} fill={isDark ? "#ffffff" : "#000000"} fillOpacity={0.3} animationDuration={0} />
         </AreaChart>
       </ResponsiveContainer>
@@ -45,7 +46,8 @@ const CpuCard = memo(function CpuCard({ stats, history }: CpuCardProps) {
             <CartesianGrid stroke={isDark ? "#ffffff" : "#000000"} strokeOpacity={0.2} />
             <XAxis dataKey="core" stroke={isDark ? "#ffffff" : "#000000"} axisLine={false} tick={{ fill: isDark ? '#ffffff' : '#000000' }} />
             <YAxis domain={[0, 100]} hide />
-            <Tooltip contentStyle={{ backgroundColor: isDark ? '#111' : '#fff', color: isDark ? '#ffffff' : '#000000', border: `2px solid ${isDark ? '#ffffff' : '#000000'}`, padding: '10px', fontSize: '14px', fontFamily: 'monospace' }} formatter={(value) => `${value.toFixed(1)}%`} />
+          <Tooltip contentStyle={{ backgroundColor: isDark ? '#111' : '#fff', color: isDark ? '#ffffff' : '#000000', border: `2px solid ${isDark ? '#ffffff' : '#000000'}`, padding: '10px', fontSize: '14px', fontFamily: 'monospace' }} formatter={(value) => `${Number(value).toFixed(1)}%`} />
+
             <Bar dataKey="load" fill={isDark ? "#ffffff" : "#000000"} radius={[2, 2, 0, 0]} animationDuration={0} />
           </BarChart>
         </ResponsiveContainer>
