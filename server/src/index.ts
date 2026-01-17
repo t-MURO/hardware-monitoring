@@ -100,6 +100,6 @@ setInterval(async () => {
   io.emit('stats', stats);
 }, 2000);
 
-server.listen(3001, () => {
+server.listen(12332, () => {
   console.log('Server running on port 3001');
 });
