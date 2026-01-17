@@ -26,6 +26,6 @@ COPY --from=build /app/server/package-lock.json ./server/package-lock.json
 
 RUN npm --prefix server ci --omit=dev
 
-EXPOSE 3001
+EXPOSE 12332
 
 CMD ["npm", "--prefix", "server", "run", "start"]
