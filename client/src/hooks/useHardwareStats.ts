@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import io from 'socket.io-client';
 import * as types from '../types.ts';
 
-const socket = io('http://localhost:3001');
+const socketUrl = import.meta.env.VITE_SOCKET_URL ?? (import.meta.env.DEV ? 'http://localhost:12332' : undefined);
+const socket = socketUrl ? io(socketUrl) : io();
 
 export function useHardwareStats() {
   const [stats, setStats] = useState<types.HardwareStats | null>(null);
